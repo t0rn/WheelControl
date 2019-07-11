@@ -82,7 +82,7 @@ class WheelControl: UIControl {
     
         
     
-        currentAngle = normalize(0.0)
+        currentAngle = normalize(currentAngle)
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture(_:)))
         tapGestureRecognizer.numberOfTapsRequired = 1
         tapGestureRecognizer.numberOfTouchesRequired = 1
@@ -97,7 +97,6 @@ class WheelControl: UIControl {
         
         let tPoint = recognizer.location(in: view)
         let touchPointAngle = rotationAngle(for: tPoint, in: view)
-        print("touchPointAngle \(touchPointAngle * 180/CGFloat.pi)")
         let normRotationAngle = normalize(touchPointAngle)
         
         rotate(by: normRotationAngle, animated: true) { }
@@ -135,6 +134,7 @@ class WheelControl: UIControl {
     }
     
     func normalize(_ angle: CGFloat) -> CGFloat {
+        guard angle != 0.0 else {return 0.0}
         return CGFloat(roundf(Float(angle/angleStep))) * angleStep
     }
 

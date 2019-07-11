@@ -13,6 +13,7 @@ import UIKit
 class ColorViewWheelControl : WheelControl {
     override func commonInit() {
         super.commonInit()
+        wheelColor = #colorLiteral(red: 0.9372549057, green: 0.9372549057, blue: 0.9568627477, alpha: 1)
         seedColorViews()
     }
     
