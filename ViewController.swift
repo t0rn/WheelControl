@@ -12,6 +12,7 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var colorWheel: ColorViewWheelControl!
     @IBOutlet weak var emojiWheel: EmojiWheel!
+    @IBOutlet weak var emojiLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +28,7 @@ class ViewController: UIViewController {
     @IBAction func emojiWheelValueChanged(_ sender: EmojiWheel) {
         guard let label = sender.selectedView as? UILabel,
             let emoji  = label.text else {return}
-        print(emoji)
+        emojiLabel.text = emoji
     }
     
     private func updateUI(with color: UIColor){

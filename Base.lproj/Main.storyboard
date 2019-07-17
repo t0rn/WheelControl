@@ -38,6 +38,12 @@
                                     <action selector="colorWheelvalueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="6Yp-q9-S6E"/>
                                 </connections>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fwb-ht-mDK">
+                                <rect key="frame" x="187.5" y="333.5" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -46,13 +52,16 @@
                             <constraint firstAttribute="bottom" secondItem="vNf-7E-Asm" secondAttribute="bottom" constant="-270" id="S0n-6K-3pF"/>
                             <constraint firstItem="Z5w-Bm-Ouh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dI9-S3-ybY"/>
                             <constraint firstItem="vNf-7E-Asm" firstAttribute="width" secondItem="Z5w-Bm-Ouh" secondAttribute="height" multiplier="94:67" id="iRA-fX-5b3"/>
+                            <constraint firstItem="Fwb-ht-mDK" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="myg-WN-mYd"/>
                             <constraint firstItem="Z5w-Bm-Ouh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="sNY-pO-72I"/>
+                            <constraint firstItem="Fwb-ht-mDK" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="w8m-bI-F55"/>
                             <constraint firstItem="vNf-7E-Asm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xdH-eT-Ox6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="colorWheel" destination="Z5w-Bm-Ouh" id="YY6-rx-M90"/>
+                        <outlet property="emojiLabel" destination="Fwb-ht-mDK" id="alu-AB-faO"/>
                         <outlet property="emojiWheel" destination="vNf-7E-Asm" id="KMe-8l-sjF"/>
                     </connections>
                 </viewController>
