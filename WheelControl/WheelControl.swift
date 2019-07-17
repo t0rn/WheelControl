@@ -201,7 +201,7 @@ extension WheelControl {
         let angleStep = self.angleStep * 180/CGFloat.pi
         let r = currentAngle.remainder(dividingBy: angleStep) * CGFloat.pi/180
         let rotationAngle = -r //revert sign for rotation!
-        
+        //TODO: pass animation duration considering acceleration
         rotate(by: rotationAngle, animated: true) {
             completion?()
         }

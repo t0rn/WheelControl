@@ -18,6 +18,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vNf-7E-Asm" customClass="EmojiWheel" customModule="WheelControl" customModuleProvider="target">
+                                <rect key="frame" x="-47.5" y="467" width="470" height="470"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="vNf-7E-Asm" secondAttribute="height" multiplier="1:1" id="Cej-VI-aIG"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="emojiWheelValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="MbK-6i-gT6"/>
+                                </connections>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z5w-Bm-Ouh" customClass="ColorViewWheelControl" customModule="WheelControl" customModuleProvider="target">
                                 <rect key="frame" x="20" y="532" width="335" height="335"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -33,13 +43,17 @@
                         <constraints>
                             <constraint firstItem="Z5w-Bm-Ouh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="8Fw-IY-VFd"/>
                             <constraint firstAttribute="bottom" secondItem="Z5w-Bm-Ouh" secondAttribute="bottom" constant="-200" id="Nuc-hd-lfK"/>
+                            <constraint firstAttribute="bottom" secondItem="vNf-7E-Asm" secondAttribute="bottom" constant="-270" id="S0n-6K-3pF"/>
                             <constraint firstItem="Z5w-Bm-Ouh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dI9-S3-ybY"/>
+                            <constraint firstItem="vNf-7E-Asm" firstAttribute="width" secondItem="Z5w-Bm-Ouh" secondAttribute="height" multiplier="94:67" id="iRA-fX-5b3"/>
                             <constraint firstItem="Z5w-Bm-Ouh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="sNY-pO-72I"/>
+                            <constraint firstItem="vNf-7E-Asm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xdH-eT-Ox6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="colorWheel" destination="Z5w-Bm-Ouh" id="YY6-rx-M90"/>
+                        <outlet property="emojiWheel" destination="vNf-7E-Asm" id="KMe-8l-sjF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
