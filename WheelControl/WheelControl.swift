@@ -26,11 +26,7 @@ class WheelControl: UIControl {
     
     private var circleRadius: CGFloat = 0.0
     
-    private (set) var currentAngle: CGFloat = 0.0 {
-        didSet {
-            sendActions(for: .valueChanged)
-        }
-    }
+    private (set) var currentAngle: CGFloat = 0.0
     
     private var angleStep: CGFloat = 0.0
     
@@ -80,9 +76,8 @@ class WheelControl: UIControl {
         contentView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         contentView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
     
-        
-    
         currentAngle = normalize(currentAngle)
+        sendActions(for: .valueChanged)
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture(_:)))
         tapGestureRecognizer.numberOfTapsRequired = 1
         tapGestureRecognizer.numberOfTouchesRequired = 1
@@ -100,7 +95,6 @@ class WheelControl: UIControl {
         let normRotationAngle = normalize(touchPointAngle)
         
         rotate(by: normRotationAngle, animated: true) { }
-    
     }
     
 
@@ -125,7 +119,8 @@ class WheelControl: UIControl {
             direction = targetAngle - recognizer.prevTouchAngle
             
             rotate(by: direction, animated: true) {
-                self.rotateToNearestValue { }
+                self.rotateToNearestValue(with: Double(slideFactor),
+                                          completion: nil)
             }
             return
         }
@@ -140,7 +135,6 @@ class WheelControl: UIControl {
 
     
     private func addViews(_ views: [UIView]) {
-        //remove prev
         contentView.subviews.forEach({ $0.removeFromSuperview() })
         
         angleStep = 2.0 * CGFloat.pi / CGFloat(views.count)
@@ -156,6 +150,8 @@ class WheelControl: UIControl {
             let yOffset: CGFloat = cos(angleForPoint) * (r - offset)
             
             view.center = CGPoint(x: r+xOffset, y: r+yOffset)
+            //rotate view
+            view.transform = view.transform.rotated(by: angle/2.0)
             
             contentView.addSubview(view)
         }
@@ -168,10 +164,13 @@ class WheelControl: UIControl {
 extension WheelControl {
     
     private func rotate(by angle:CGFloat, animated:Bool = false, duration: Double = 0.35, completion: @escaping (()->Void) )  {
+        print("duration: \(duration)")
         CATransaction.begin()
-        CATransaction.setCompletionBlock({
+        CATransaction.setCompletionBlock({ [weak self] in
+            guard let self = self else {return}
             self.currentAngle = atan2(self.contentView.transform.b,
                                       self.contentView.transform.a)
+            self.sendActions(for: .valueChanged)
             completion()
         })
         CATransaction.setDisableActions(true)
@@ -195,14 +194,17 @@ extension WheelControl {
         CATransaction.commit()
     }
     
-    private func rotateToNearestValue(with completion: (()->Void)?) {
+    private func rotateToNearestValue(with slideFactor: Double, completion: (()->Void)?) {
         //use remainder in degrees instead radians
         let currentAngle = self.currentAngle * 180/CGFloat.pi
         let angleStep = self.angleStep * 180/CGFloat.pi
         let r = currentAngle.remainder(dividingBy: angleStep) * CGFloat.pi/180
         let rotationAngle = -r //revert sign for rotation!
-        //TODO: pass animation duration considering acceleration
-        rotate(by: rotationAngle, animated: true) {
+        
+        print("slideFactor \(slideFactor)")
+        //TODO: calc animation duration considering acceleration
+        let animationDuration = 0.35 / (0.35 * slideFactor)
+        rotate(by: rotationAngle, animated: true, duration:animationDuration) {
             completion?()
         }
     }
