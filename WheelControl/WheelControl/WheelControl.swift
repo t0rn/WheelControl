@@ -164,7 +164,6 @@ class WheelControl: UIControl {
 extension WheelControl {
     
     private func rotate(by angle:CGFloat, animated:Bool = false, duration: Double = 0.35, completion: @escaping (()->Void) )  {
-        print("duration: \(duration)")
         CATransaction.begin()
         CATransaction.setCompletionBlock({ [weak self] in
             guard let self = self else {return}
@@ -201,9 +200,12 @@ extension WheelControl {
         let r = currentAngle.remainder(dividingBy: angleStep) * CGFloat.pi/180
         let rotationAngle = -r //revert sign for rotation!
         
-        print("slideFactor \(slideFactor)")
-        //TODO: calc animation duration considering acceleration
-        let animationDuration = 0.35 / (0.35 * slideFactor)
+        //change animation duration by slide factor
+        var animationDuration = 0.25
+        if slideFactor > 1 {
+            animationDuration /= slideFactor
+        }
+        
         rotate(by: rotationAngle, animated: true, duration:animationDuration) {
             completion?()
         }
