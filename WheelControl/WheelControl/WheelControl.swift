@@ -69,25 +69,33 @@ class WheelControl: UIControl {
         contentView.clipsToBounds = true
         addSubview(contentView)
         
-        //setup constraints
+        setupConstraints()
+    
+        currentAngle = normalize(currentAngle)
+        sendActions(for: .valueChanged)
+        
+        addGestureRecognizers()
+    }
+    
+    fileprivate func addGestureRecognizers() {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture(_:)))
+        tapGestureRecognizer.numberOfTapsRequired = 1
+        tapGestureRecognizer.numberOfTouchesRequired = 1
+        addGestureRecognizer(tapGestureRecognizer)
+        
+        let rotationRecognizer = RotationGestureRecognizer(target: self, action: #selector(handleRotationGesture(_:)))
+        addGestureRecognizer(rotationRecognizer)
+    }
+    
+    fileprivate func setupConstraints() {
         contentView.translatesAutoresizingMaskIntoConstraints = false
         contentView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         contentView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         contentView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         contentView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-    
-        currentAngle = normalize(currentAngle)
-        sendActions(for: .valueChanged)
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture(_:)))
-        tapGestureRecognizer.numberOfTapsRequired = 1
-        tapGestureRecognizer.numberOfTouchesRequired = 1
-        
-        addGestureRecognizer(tapGestureRecognizer)
-        let rotationRecognizer = RotationGestureRecognizer(target: self, action: #selector(handleRotationGesture(_:)))
-        addGestureRecognizer(rotationRecognizer)
     }
     
-    @objc private func handleTapGesture(_ recognizer: UITapGestureRecognizer) {
+    @objc fileprivate func handleTapGesture(_ recognizer: UITapGestureRecognizer) {
         guard let view = recognizer.view else {return}
         
         let tPoint = recognizer.location(in: view)
@@ -98,7 +106,7 @@ class WheelControl: UIControl {
     }
     
 
-    @objc private func handleRotationGesture(_ recognizer:RotationGestureRecognizer) {
+    @objc fileprivate func handleRotationGesture(_ recognizer:RotationGestureRecognizer) {
         if recognizer.state == .failed,
             recognizer.state == .failed {
             return
@@ -128,13 +136,13 @@ class WheelControl: UIControl {
         rotate(by: direction, animated: true){ }
     }
     
-    func normalize(_ angle: CGFloat) -> CGFloat {
+    fileprivate func normalize(_ angle: CGFloat) -> CGFloat {
         guard angle != 0.0 else {return 0.0}
         return CGFloat(roundf(Float(angle/angleStep))) * angleStep
     }
 
     
-    private func addViews(_ views: [UIView]) {
+    fileprivate  func addViews(_ views: [UIView]) {
         contentView.subviews.forEach({ $0.removeFromSuperview() })
         
         angleStep = 2.0 * CGFloat.pi / CGFloat(views.count)
@@ -156,14 +164,10 @@ class WheelControl: UIControl {
             contentView.addSubview(view)
         }
     }
-
-}
-
-
-//MARK: Rotation
-extension WheelControl {
     
-    private func rotate(by angle:CGFloat, animated:Bool = false, duration: Double = 0.35, completion: @escaping (()->Void) )  {
+    //MARK: Rotation
+    
+    fileprivate  func rotate(by angle:CGFloat, animated:Bool = false, duration: Double = 0.35, completion: @escaping (()->Void) )  {
         CATransaction.begin()
         CATransaction.setCompletionBlock({ [weak self] in
             guard let self = self else {return}
@@ -193,7 +197,7 @@ extension WheelControl {
         CATransaction.commit()
     }
     
-    private func rotateToNearestValue(with slideFactor: Double, completion: (()->Void)?) {
+    fileprivate  func rotateToNearestValue(with slideFactor: Double, completion: (()->Void)?) {
         //use remainder in degrees instead radians
         let currentAngle = self.currentAngle * 180/CGFloat.pi
         let angleStep = self.angleStep * 180/CGFloat.pi
@@ -213,7 +217,7 @@ extension WheelControl {
     
     
     ///Returns angle to rotate on y axis by touch point to view center in rads
-    private func rotationAngle(for point: CGPoint, in view: UIView) -> CGFloat {
+    fileprivate  func rotationAngle(for point: CGPoint, in view: UIView) -> CGFloat {
         let centerOffset = CGPoint(x: point.x - view.bounds.midX, y: point.y - view.bounds.midY)
         var angle = atan2(centerOffset.y, centerOffset.x) + CGFloat.pi/2
         //QI

@@ -14,8 +14,6 @@
 		DC85346F22D62F8900F890DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC85346D22D62F8900F890DD /* LaunchScreen.storyboard */; };
 		DC87468B22DF516B003F0198 /* RotationGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC87468622DF516B003F0198 /* RotationGestureRecognizer.swift */; };
 		DC87468C22DF516B003F0198 /* WheelControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC87468722DF516B003F0198 /* WheelControl.swift */; };
-		DC87468D22DF516C003F0198 /* EmojiWheel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC87468922DF516B003F0198 /* EmojiWheel.swift */; };
-		DC87468E22DF516C003F0198 /* ColorViewWheelControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC87468A22DF516B003F0198 /* ColorViewWheelControl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,8 +26,6 @@
 		DC85347022D62F8900F890DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DC87468622DF516B003F0198 /* RotationGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotationGestureRecognizer.swift; sourceTree = "<group>"; };
 		DC87468722DF516B003F0198 /* WheelControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WheelControl.swift; sourceTree = "<group>"; };
-		DC87468922DF516B003F0198 /* EmojiWheel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiWheel.swift; sourceTree = "<group>"; };
-		DC87468A22DF516B003F0198 /* ColorViewWheelControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorViewWheelControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +59,6 @@
 			isa = PBXGroup;
 			children = (
 				DC87468522DF516B003F0198 /* WheelControl */,
-				DC87468822DF516B003F0198 /* WheelControl subclasses */,
 				DC85346422D62F8600F890DD /* AppDelegate.swift */,
 				DC85346622D62F8600F890DD /* ViewController.swift */,
 				DC85346822D62F8700F890DD /* Main.storyboard */,
@@ -81,15 +76,6 @@
 				DC87468722DF516B003F0198 /* WheelControl.swift */,
 			);
 			path = WheelControl;
-			sourceTree = "<group>";
-		};
-		DC87468822DF516B003F0198 /* WheelControl subclasses */ = {
-			isa = PBXGroup;
-			children = (
-				DC87468922DF516B003F0198 /* EmojiWheel.swift */,
-				DC87468A22DF516B003F0198 /* ColorViewWheelControl.swift */,
-			);
-			path = "WheelControl subclasses";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,9 +151,7 @@
 			files = (
 				DC85346722D62F8600F890DD /* ViewController.swift in Sources */,
 				DC87468B22DF516B003F0198 /* RotationGestureRecognizer.swift in Sources */,
-				DC87468E22DF516C003F0198 /* ColorViewWheelControl.swift in Sources */,
 				DC85346522D62F8600F890DD /* AppDelegate.swift in Sources */,
-				DC87468D22DF516C003F0198 /* EmojiWheel.swift in Sources */,
 				DC87468C22DF516B003F0198 /* WheelControl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

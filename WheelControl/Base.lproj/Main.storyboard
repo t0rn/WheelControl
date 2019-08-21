@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vNf-7E-Asm" customClass="EmojiWheel" customModule="WheelControl" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vNf-7E-Asm" customClass="WheelControl" customModule="WheelControl" customModuleProvider="target">
                                 <rect key="frame" x="-47.5" y="467" width="470" height="470"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -28,7 +28,7 @@
                                     <action selector="emojiWheelValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="MbK-6i-gT6"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z5w-Bm-Ouh" customClass="ColorViewWheelControl" customModule="WheelControl" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z5w-Bm-Ouh" customClass="WheelControl" customModule="WheelControl" customModuleProvider="target">
                                 <rect key="frame" x="20" y="532" width="335" height="335"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -44,15 +44,23 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="👇" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sdd-dy-cDl">
+                                <rect key="frame" x="174" y="430" width="27" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Z5w-Bm-Ouh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="8Fw-IY-VFd"/>
+                            <constraint firstItem="Sdd-dy-cDl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="GbV-6R-WQl"/>
                             <constraint firstAttribute="bottom" secondItem="Z5w-Bm-Ouh" secondAttribute="bottom" constant="-200" id="Nuc-hd-lfK"/>
                             <constraint firstAttribute="bottom" secondItem="vNf-7E-Asm" secondAttribute="bottom" constant="-270" id="S0n-6K-3pF"/>
                             <constraint firstItem="Z5w-Bm-Ouh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dI9-S3-ybY"/>
                             <constraint firstItem="vNf-7E-Asm" firstAttribute="width" secondItem="Z5w-Bm-Ouh" secondAttribute="height" multiplier="94:67" id="iRA-fX-5b3"/>
                             <constraint firstItem="Fwb-ht-mDK" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="myg-WN-mYd"/>
+                            <constraint firstItem="vNf-7E-Asm" firstAttribute="top" secondItem="Sdd-dy-cDl" secondAttribute="bottom" constant="8" id="nHf-hu-EGO"/>
                             <constraint firstItem="Z5w-Bm-Ouh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="sNY-pO-72I"/>
                             <constraint firstItem="Fwb-ht-mDK" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="w8m-bI-F55"/>
                             <constraint firstItem="vNf-7E-Asm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xdH-eT-Ox6"/>
