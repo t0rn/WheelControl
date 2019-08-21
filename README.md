@@ -1,5 +1,5 @@
-# WheelControl
-iOS UIControl for selection an item (UIView) from 360° spinning wheel 
+# WheelControl. 
+iOS UIControl for selection an item (UIView) from 360° spinning wheel.  
 ![](https://raw.githubusercontent.com/t0rn/WheelControl/master/WheelControl.gif)
 
 ## Usage
