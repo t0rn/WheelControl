@@ -58,8 +58,7 @@ class ViewController: UIViewController {
             .split(separator: ",")
             .map{ String($0) }
         let labels = emoji.map { text -> UILabel in
-            let label = UILabel(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-            label.numberOfLines = 0
+            let label = UILabel()
             label.text = text
             label.font = .systemFont(ofSize: 20)
             label.sizeToFit()
